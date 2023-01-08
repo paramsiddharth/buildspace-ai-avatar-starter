@@ -42,12 +42,14 @@ const Home = () => {
       setRetry(0);
     }
 
+    const finalInput = input.replace(/param/gi, 'paramsid');
+
     const response = await fetch('/api/generate', {
       method: 'POST',
       headers: {
         'Content-Type': 'image/jpeg',
       },
-      body: JSON.stringify({ input }),
+      body: JSON.stringify({ input: finalInput }),
     });
     
     const data = await response.json();
